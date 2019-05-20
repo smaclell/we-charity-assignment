@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Trailer = ({ name, url}) => (
+const Trailer = ({ name, url }) => (
   <a href={url} target="_blank" rel="noopener noreferrer">
-    <FontAwesomeIcon icon="play" style={{
-      color: `black`,
-      fontSize: '24px',
-    }} />
+    <FontAwesomeIcon
+      icon="play"
+      style={{
+        color: `black`,
+        fontSize: '24px',
+      }}
+    />
     <span>{name}</span>
   </a>
 );

@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,10 +21,12 @@ const Header = ({ siteTitle, hasBack = false }) => (
         justifyContent: 'space-between',
       }}
     >
-      <h1 style={{
-        display: 'inline',
-        margin: 0,
-      }}>
+      <h1
+        style={{
+          display: 'inline',
+          margin: 0,
+        }}
+      >
         <Link
           to="/"
           style={{
@@ -32,31 +34,37 @@ const Header = ({ siteTitle, hasBack = false }) => (
             color: `white`,
           }}
         >
-          { hasBack && (
-            <FontAwesomeIcon icon="arrow-left" style={{
-              color: `white`,
-              fontSize: '32px',
-              marginRight: '12px',
-            }} />
+          {hasBack && (
+            <FontAwesomeIcon
+              icon="arrow-left"
+              style={{
+                color: `white`,
+                fontSize: '32px',
+                marginRight: '12px',
+              }}
+            />
           )}
           {siteTitle}
         </Link>
       </h1>
 
-      <FontAwesomeIcon icon="ellipsis-v" style={{
-        color: `white`,
-        fontSize: '32px',
-      }} />
+      <FontAwesomeIcon
+        icon="ellipsis-v"
+        style={{
+          color: `white`,
+          fontSize: '32px',
+        }}
+      />
     </div>
   </header>
-)
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

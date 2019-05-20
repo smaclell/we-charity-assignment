@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -7,7 +7,7 @@ import Movies from '../components/movies';
 
 const IndexPage = () => (
   <Layout title="Pop Movies">
-    <SEO title='Home' />
+    <SEO title="Home" />
     <StaticQuery
       query={graphql`
         query MovieQuery {
@@ -27,6 +27,6 @@ const IndexPage = () => (
       )}
     />
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

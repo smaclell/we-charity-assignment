@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'gatsby';
 
 const Tile = ({ id, title, poster_path }) => (

@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
 
-import Header from "./header"
-import "./layout.css"
+import Header from './header';
+import './layout.css';
 
 const Layout = ({ title, className, hasBack = false, children }) => (
   <StaticQuery
@@ -25,7 +25,10 @@ const Layout = ({ title, className, hasBack = false, children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={title || data.site.siteMetadata.title} hasBack={hasBack} />
+        <Header
+          siteTitle={title || data.site.siteMetadata.title}
+          hasBack={hasBack}
+        />
         <div
           style={{
             margin: `0 auto`,
@@ -38,10 +41,10 @@ const Layout = ({ title, className, hasBack = false, children }) => (
       </>
     )}
   />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

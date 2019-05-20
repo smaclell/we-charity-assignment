@@ -4,16 +4,18 @@ import React from 'react';
 import MovieTile from './movie-tile';
 
 const List = ({ movies = [] }) => (
-  <ul style={{
-    listStyle: 'none',
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '100%',
-    margin: 0,
-    padding: 0,
-    backgroundColor: 'black',
-  }}>
-    {movies.map((movie) => (
+  <ul
+    style={{
+      listStyle: 'none',
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: '100%',
+      margin: 0,
+      padding: 0,
+      backgroundColor: 'black',
+    }}
+  >
+    {movies.map(movie => (
       <li
         key={movie.id}
         style={{
