@@ -1,97 +1,88 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# WE Charity Assignment
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This is a simple demo using the [Movie Database](https://www.themoviedb.org/settings/api). The site contains two pages, one a simple tile of movies and then a details page.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Built using React/Gatsby as a static site.
 
-## 🚀 Quick start
+## Developing
 
-1.  **Create a Gatsby site.**
+```
+yarn install
+yarn develop
+```
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+One running the site is at http://localhost:8000.
+You can also review all the site data with http://localhost:8000/___graphql
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+## TODO:
 
-1.  **Start developing.**
+While I had fun building the site I did not budget my time as effectively as I would have liked. I got stuck trying to vertically center the trailer links/icon without using flexbox. I also took longer than I would have liked reviewing the files and writing this readme.
 
-    Navigate into your new site’s directory and start it up.
+Given more time I would have done the following:
 
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
+* Reviewed the site for accessibility issues (I have done the basics, but feel like I could do more)
+* Done more responsiveness testing (I tested all the chrome presets)
+* Confirmed whether CSS/JS polyfills are correct (none added)
+* Moved the inline CSS to files (mostly in the movies list)
+* Reviewed the site performance and bundle sizes
+* Added page transitions for some extra pop
+* Create a simple GraphQL server on top of the provided api
 
-1.  **Open the source code and start editing!**
+## Data
 
-    Your site is now running at `http://localhost:8000`!
+Instead of fetching the data at runtime I opted to download it all ahead of time. This meant the site is blazingly fast. I realize now this violates one of the basic requirements you had given.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+Had I opted to download the data client side I would have either used appolo client with a graphql proxy to the actual backend or fetch with redux or fetch from an outer container containing the data.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+My redux structure would have looked something like:
 
-## 🧐 What's inside?
+```
+{
+  // I would use an infinite scroll to get more data using the current page and the total count
+  pages: {
+    total: 992,
+    current: 1,
+    loading: true || false,
+    movies: [1, 2, 3], // With the individual movies
+  },
+  movies: {
+    [id]: {
+      // All of the movie data would go here
+    }
+  }
+}
+```
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+This is the rough script I used to download the data (minus my api key):
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+```bash
+mkdir -p data/movies
+curl -o data/index.json https://api.themoviedb.org/3/movie/popular?api_key\=<<API_KEY>>
+curl -o data/movies/299534.json https://api.themoviedb.org/3/movie/299534?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/447404.json https://api.themoviedb.org/3/movie/447404?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/458156.json https://api.themoviedb.org/3/movie/458156?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/543103.json https://api.themoviedb.org/3/movie/543103?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/299537.json https://api.themoviedb.org/3/movie/299537?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/456740.json https://api.themoviedb.org/3/movie/456740?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/280960.json https://api.themoviedb.org/3/movie/280960?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/531309.json https://api.themoviedb.org/3/movie/531309?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/449562.json https://api.themoviedb.org/3/movie/449562?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/287947.json https://api.themoviedb.org/3/movie/287947?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/438650.json https://api.themoviedb.org/3/movie/438650?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/299536.json https://api.themoviedb.org/3/movie/299536?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/245891.json https://api.themoviedb.org/3/movie/245891?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/576393.json https://api.themoviedb.org/3/movie/576393?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/166428.json https://api.themoviedb.org/3/movie/166428?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/157433.json https://api.themoviedb.org/3/movie/157433?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/537915.json https://api.themoviedb.org/3/movie/537915?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/450465.json https://api.themoviedb.org/3/movie/450465?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/284054.json https://api.themoviedb.org/3/movie/284054?api_key=<<API_KEY>>&append_to_response=videos
+curl -o data/movies/375588.json https://api.themoviedb.org/3/movie/375588?api_key=<<API_KEY>>&append_to_response=videos
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## Licences
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+This demo uses a variety of open source tools including:
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+* Gastby
+* Font Awesome

@@ -8,6 +8,8 @@ const Header = ({ siteTitle, hasBack = false }) => (
   <header
     style={{
       background: `#212121`,
+      position: 'sticky',
+      top: 0,
     }}
   >
     <div

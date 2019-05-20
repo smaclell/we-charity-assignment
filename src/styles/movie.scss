@@ -37,6 +37,7 @@
       margin-bottom: 1.45rem;
     }
 
+    // Smaller screen sizes looked a bit off with the full width image
     @media only screen and (max-width: 372px)  {
       img {
         width: 128px;
