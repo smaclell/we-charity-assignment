@@ -18,7 +18,7 @@ const Page = ({
     },
   },
 }) => (
-  <Layout title="Movie Details" className="movie">
+  <Layout title="Movie Details" className="movie" hasBack>
     <SEO title={title} />
     <h2>{title}</h2>
     <div className="wrapper">
