@@ -11,6 +11,7 @@ const List = ({ movies = [] }) => (
     width: '100%',
     margin: 0,
     padding: 0,
+    backgroundColor: 'black',
   }}>
     {movies.map((movie) => (
       <li
@@ -20,6 +21,9 @@ const List = ({ movies = [] }) => (
           minWidth: '50%',
           margin: 0,
           padding: 0,
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
         }}
       >
         <MovieTile {...movie} />

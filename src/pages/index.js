@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import Movies from '../components/movies';
 
 const IndexPage = () => (
-  <Layout>
+  <Layout title="Pop Movies">
     <SEO title='Home' />
     <StaticQuery
       query={graphql`
@@ -15,7 +15,7 @@ const IndexPage = () => (
             results {
               id
               title
-              backdrop_path
+              poster_path
             }
           }
         }
