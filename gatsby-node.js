@@ -20,6 +20,15 @@ exports.createPages = async ({ graphql, actions }) => {
           vote_average,
           runtime,
           release_date,
+          videos {
+            results {
+              id,
+              key,
+              name,
+              site,
+              type,
+            }
+          }
         }
       }
     }
@@ -29,9 +38,20 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMoviesJson.edges.forEach(({ node }) => {
     // Normally I would do something a bit more resilient here
     const year = node.release_date.split('-')[0];
+
+    // Just going to support youtube trailers for the demo
+    const videos = node.videos.results
+      .filter(v => v.type === 'Trailer' && v.site === 'YouTube')
+      .map(v => ({
+        id: v.id,
+        name: v.name,
+        url: `https://www.youtube.com/watch?v=${v.key}`,
+      }));
+
     const data = {
       ...node,
       year,
+      videos,
       rating: node.vote_average,
     };
 
