@@ -11,7 +11,8 @@ yarn install
 yarn develop
 ```
 
-One running the site is at http://localhost:8000.
+The running the site is at http://localhost:8000
+
 You can also review all the site data with http://localhost:8000/___graphql
 
 ## TODO:
@@ -32,7 +33,7 @@ Given more time I would have done the following:
 
 Instead of fetching the data at runtime I opted to download it all ahead of time. This meant the site is blazingly fast. I realize now this violates one of the basic requirements you had given.
 
-Had I opted to download the data client side I would have either used appolo client with a graphql proxy to the actual backend or fetch with redux or fetch from an outer container containing the data.
+Had I opted to fetch data when the page first loads, I would have either used [Apollo Client](https://www.apollographql.com/docs/tutorial/client.html) with a [graphql proxy](https://www.apollographql.com/docs/tutorial/data-source) to the actual backend or fetch with redux or fetch from an outer container containing the data.
 
 My redux structure would have looked something like:
 
