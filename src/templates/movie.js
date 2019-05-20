@@ -25,7 +25,7 @@ const Page = ({
       <section className="details">
         <div className="info">
           <p className="year">{year}</p>
-          <p className="runtime">{runtime}</p>
+          <p className="runtime">{runtime} min</p>
           <p className="rating">{rating}/10</p>
           <button>
             mark as favourite
