@@ -15,6 +15,11 @@ exports.createPages = async ({ graphql, actions }) => {
           id,
           title,
           backdrop_path,
+          poster_path,
+          overview,
+          vote_average,
+          runtime,
+          release_date,
         }
       }
     }
@@ -22,11 +27,19 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.allMoviesJson.edges.forEach(({ node }) => {
+    // Normally I would do something a bit more resilient here
+    const year = node.release_date.split('-')[0];
+    const data = {
+      ...node,
+      year,
+      rating: node.vote_average,
+    };
+
     createPage({
       path: `/movies/${node.id}`,
       component: path.resolve(path.join(__dirname, `./src/templates/movie.js`)),
       context: {
-        data: node,
+        data,
       },
     })
   });
