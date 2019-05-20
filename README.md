@@ -24,10 +24,10 @@ Given more time I would have done the following:
 * Reviewed the site for accessibility issues (I have done the basics, but feel like I could do more)
 * Done more responsiveness testing (I tested all the chrome presets)
 * Confirmed whether CSS/JS polyfills are correct (none added)
-* Moved the inline CSS to files (mostly in the movies list)
+* Moved the inline CSS to files (mostly in the movies list and generated files from Gatsby)
 * Reviewed the site performance and bundle sizes
 * Added page transitions for some extra pop
-* Create a simple GraphQL server on top of the provided api
+* Create a simple GraphQL server on top of the provided api and show the client side version too
 
 ## Data
 
